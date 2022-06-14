@@ -123,3 +123,13 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     /*RUTAS PARA LA RELACION Ó BUSQUEDA*/
     Route::get('coincidencia/{id}', 'Genetica\CoincidenciaController@index')->name('coincidencia');
     Route::post('analizar', 'Genetica\CoincidenciaController@analizar')->name('analizar_secuencia');
+
+    /**************************************PROYECTO DE INVENTARIO *************************************************/
+
+    /*RUTAS DE PRODUCTOS*/
+    Route::get('producto', 'Inventario\CatalogoController@index')->name('producto');
+    Route::get('producto/crear', 'Inventario\CatalogoController@crear')->name('crear_producto');
+    Route::post('producto', 'Inventario\CatalogoController@guardar')->name('guardar_producto');
+    Route::get('producto/{id}/editar', 'Inventario\CatalogoController@editar')->name('editar_producto');
+    Route::put('producto/{id}', 'Inventario\CatalogoController@actualizar')->name('actualizar_producto');
+    Route::delete('producto/{id}', 'Inventario\CatalogoController@eliminar')->name('eliminar_producto');
