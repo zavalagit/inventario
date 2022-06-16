@@ -133,3 +133,11 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     Route::get('producto/{id}/editar', 'Inventario\CatalogoController@editar')->name('editar_producto');
     Route::put('producto/{id}', 'Inventario\CatalogoController@actualizar')->name('actualizar_producto');
     Route::delete('producto/{id}', 'Inventario\CatalogoController@eliminar')->name('eliminar_producto');
+
+    /*RUTAS DE UNIDAD DE MEDIDA*/
+    Route::get('medida', 'Inventario\UnidadmedidaController@index')->name('medida');
+    Route::get('medida/crear', 'Inventario\UnidadmedidaController@crear')->name('crear_medida');
+    Route::post('medida', 'Inventario\UnidadmedidaController@guardar')->name('guardar_medida');
+    Route::get('medida/{id}/editar', 'Inventario\UnidadmedidaController@editar')->name('editar_medida');
+    Route::put('medida/{id}', 'Inventario\UnidadmedidaController@actualizar')->name('actualizar_medida');
+    Route::delete('medida/{id}', 'Inventario\UnidadmedidaController@eliminar')->name('eliminar_medida');

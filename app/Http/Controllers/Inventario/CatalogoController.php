@@ -18,7 +18,7 @@ class CatalogoController extends Controller
         return view('inventario.producto.index', compact('Productos'));
     }
 
-    //vista del formulario para la 
+    //vista del formulario para ingresar los datos poder registrar
     public function crear()
     {
         return view('inventario.producto.crear');
