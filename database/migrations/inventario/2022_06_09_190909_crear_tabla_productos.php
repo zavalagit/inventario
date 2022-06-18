@@ -16,6 +16,9 @@ class CrearTablaProductos extends Migration
         Schema::create('productos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre', 250);
+            $table->bigInteger('cantidad')->default(0);
+            $table->unsignedInteger('unidadmedida_id');
+            $table->foreign('unidadmedida_id')->references('id')->on('unidadmedidas')->onDelete('cascade');
             $table->unsignedInteger('usuario_id');
             $table->foreign('usuario_id')->references('id')->on('usuarios')->onDelete('cascade');
             $table->timestamps();

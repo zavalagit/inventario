@@ -119,6 +119,7 @@
 <script src="{{asset('js/jquery/jquery-3.3.1.min.js')}}"></script>	 
 <script src="{{asset('js/popper/popper.min.js')}}"></script>
 <script src="{{asset('js/bootstrap4js/bootstrap.min.js')}}"></script>
+<script src="{{ asset('js/app.js') }}"></script>
 <!-- Plugins que solo se ocupen en paginas especiales -->	 	
 @yield("scriptsPlugins")
 <script src="{{asset('js/pages/scripts/admin/scripts.js')}}"></script>

@@ -144,6 +144,8 @@
                                             <tr>
                                                 <th scope="col">No.</th>
                                                 <th scope="col">NOMBRE</th>
+                                                <th scope="col">CANTIDAD</th>
+                                                <th scope="col">MEDIDA</th>
                                                 <th scope="col">ALGO...</th>
                                             </tr>
                                         </thead>
@@ -157,6 +159,8 @@
                                                         <tr>
                                                             <th class="th-contador" scope="row" width="1.5%">{{$no++}}</th>
                                                             <td>{{$producto->nombre}}</td>
+                                                            <td>{{$producto->cantidad}}</td>
+                                                            <td>{{$producto->medida->nombre}}</td>
                                                             <td>
                                                                 
                                                                      <a href="{{route('editar_producto', ['id' => $producto->id])}}">
