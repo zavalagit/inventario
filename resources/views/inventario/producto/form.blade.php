@@ -22,7 +22,7 @@
           <option value="">Seleccione la unidad de medida</option>
             @foreach ($medidas as $id=> $medida)
             <option value="{{$medida->id}}"
-            
+            {{-- en un select podemos recuperar la unidad de medida o selecionar otro en editar --}}
             {{isset($data) && ($data->unidadmedida_id === $medida->id) ? 'selected' : ''}}
             
             >
@@ -31,5 +31,5 @@
         </select>     
   </div>
 
-
+ 
 </div>

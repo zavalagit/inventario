@@ -141,3 +141,11 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     Route::get('medida/{id}/editar', 'Inventario\UnidadmedidaController@editar')->name('editar_medida');
     Route::put('medida/{id}', 'Inventario\UnidadmedidaController@actualizar')->name('actualizar_medida');
     Route::delete('medida/{id}', 'Inventario\UnidadmedidaController@eliminar')->name('eliminar_medida');
+
+    /*RUTA DE UNIDADES QUE PERTECEN EL PERSONAL*/
+    Route::get('unidad', 'Inventario\UnidadController@index')->name('unidad');
+    Route::get('unidad/crear', 'Inventario\UnidadController@crear')->name('crear_unidad');
+    Route::post('unidad', 'Inventario\UnidadController@guardar')->name('guardar_unidad');
+    Route::get('unidad/{id}/editar', 'Inventario\UnidadController@editar')->name('editar_unidad');
+    Route::put('unidad/{id}', 'Inventario\UnidadController@actualizar')->name('actualizar_unidad');
+    Route::delete('unidad/{id}', 'Inventario\UnidadController@eliminar')->name('eliminar_unidad');
