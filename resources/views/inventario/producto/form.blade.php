@@ -33,3 +33,25 @@
 
  
 </div>
+
+<div class="col-md-8 mb-3">
+                    
+  <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text requerido" id="inputGroupPrepend">MATERIAL</span>
+        </div>
+        <select name="material" id="material" class="form-control" required>
+          <option value="">Seleccione el catalogo de material</option>
+            @foreach ($materiales as $id=> $material)
+            <option value="{{$material->id}}"
+            {{-- en un select podemos recuperar el material o selecionar otro en editar --}}
+            {{isset($data) && ($data->material_id === $material->id) ? 'selected' : ''}}
+            
+            >
+            {{$material->nombre}}</option>
+            @endforeach
+        </select>     
+  </div>
+
+ 
+</div>

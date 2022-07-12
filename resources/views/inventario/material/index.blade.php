@@ -1,7 +1,7 @@
 @extends('plantilla')
 
 @section('titulo')
-    Productos
+    Materiales
 @endsection
 
 @section('css')
@@ -129,13 +129,13 @@
                                 <div class="card-header text-center">
                                     <div class="row">
                                         <div class="col-12 col-md-8 text-center">
-                                            @if (count($Productos))
-                                                <h4>LISTADO DE PRODUCTOS<span class="badge badge-warning badge-pill">{{$Productos->count()}}</span></h4>
+                                            @if (count($materiales))
+                                                <h4>LISTADO DE MATERIALES<span class="badge badge-warning badge-pill">{{$materiales->count()}}</span></h4>
                                             @else
-                                                <h4>LISTADO DE PRODUCTOS<span class="badge badge-warning badge-pill">0</span></h4>
+                                                <h4>LISTADO DE MATERIALES<span class="badge badge-warning badge-pill">0</span></h4>
                                             @endif
                                         </div>
-                                        <div class="col-6 col-md-4"><a href="{{route('crear_producto')}}" class="btn btn-success float-right">Crear Producto</a></div>
+                                        <div class="col-6 col-md-4"><a href="{{route('crear_material')}}" class="btn btn-success float-right">Crear Catalogo</a></div>
                                     </div>
                                 </div>
                                 <div class="card-body">
@@ -144,34 +144,28 @@
                                             <tr>
                                                 <th scope="col">No.</th>
                                                 <th scope="col">NOMBRE</th>
-                                                <th scope="col">CANTIDAD</th>
-                                                <th scope="col">MEDIDA</th>
-                                                <th scope="col">MATERIAL</th>
                                                 <th scope="col">ACCIONES</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @if (count($Productos))
+                                            @if (count($materiales))
                                                 @php
                                                 $no = 1;
                                                 @endphp
                     
-                                                    @foreach ($Productos as $key => $producto)
+                                                    @foreach ($materiales as $key => $material)
                                                         <tr>
                                                             <th class="th-contador" scope="row" width="1.5%">{{$no++}}</th>
-                                                            <td>{{$producto->nombre}}</td>
-                                                            <td>{{$producto->cantidad}}</td>
-                                                            <td>{{$producto->medida->nombre}}</td>
-                                                            <td>{{$producto->material->nombre}}</td>
+                                                            <td>{{$material->nombre}}</td>
                                                             <td>
                                                                 
-                                                                     <a href="{{route('editar_producto', ['id' => $producto->id])}}">
+                                                                    <a href="{{route('editar_material', ['id' => $material->id])}}">
                                                                         <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-placement="left" title="Editar este registro">
                                                                             <i class="fas fa-edit fa-2x"></i>
                                                                         </span>
                                                                     </a>
                                                                   
-                                                                    <form action="{{route('eliminar_producto', ['id' => $producto->id])}}" class="d-inline form-eliminar" method="POST">
+                                                                    <form action="{{route('eliminar_material', ['id' => $material->id])}}" class="d-inline form-eliminar" method="POST">
                                                                         @csrf @method("delete")
                                                                         <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-placement="left" title="Eliminar este registro">
                                                                             <button type="submit" class="eliminar boton" id="campo" rel="tooltip">

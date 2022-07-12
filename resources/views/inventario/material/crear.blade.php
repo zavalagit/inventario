@@ -1,7 +1,7 @@
 @extends('plantilla')
 
 @section('titulo')
-    Crear Secuencia
+    Crear Material
 @endsection
 
 
@@ -69,108 +69,11 @@
                 font-size: 80%;
                 color: #28a745;
             }
-            
-            /*-----estilo de formulario------*/
-            .formulario__label{
-                cursor: pointer;
-            }
 
-            .formulario__input-error{
-                font-size: 12px;
-                display: none;
-            }
-
-            .formulario__input-error-activo{
-                display: block;
-            }
-
-            .formulario__validacion-estado{
-                position: relative;
-                right: 23px;
-                top: 10px;
-                /*bottom: 13px;*/
-                /*para que se muestre arriba*/
-                z-index: 100;
-                /*tamaño del icono*/
-                font-size: 18px;
-                /*esconder el icono*/
-                opacity: 0;
-
-            }
-
-            /*----Estilos para Validacion---*/
-            .input-group-correcto .formulario__validacion-estado{
-                color: #1ed12d;
-                opacity: 1;
-            }
-
-            .input-group-incorrecto .formulario__label{
-                color: #bb2929;
-            }
-
-            .input-group-incorrecto .formulario__validacion-estado{
-                color: #bb2929;
-                opacity: 1;
-            }
-
-            .input-group-incorrecto .form-control{
-                border: 3px solid #bb2929;
-            }
-
-            /* modificaciones de las tablas */
-        #tabla-genetica{
-            width: 100% !important;
-        }
-        #tabla-valores{
-            /* width: 180% !important; */
-        }
-
-        thead{
-            background-color: #394049 !important;
-            height: 50px !important;
-        }
-
-        th{
-            color:#c09f77;
-            padding: 8px 0 8px 0;
-        }
-        th.th-contador{
-            background-color:#394049 !important;
-            text-align: center;
-  
-        }
-        th,td{
-            padding: 5px 5px !important;
-            /* padding-right: 1px;
-            padding-right: 1px; */
-            border-radius: 0 !important;
-            text-align: center;
-            
-        }
-        .thcolorborde{
-            border: lightgoldenrodyellow 2px solid;
-        }
-
-        .tdcolorborde{
-            border: lightcoral 2px solid;
-        }
-        .trcolorborde{
-            border: black 3px solid;
-            border-bottom: 3px solid black;
-        }
-
-        .colorcol{
-            color:#c10f77;
-            border-bottom: 1px solid #f48fb1;
-        }
     </style>
 @endsection
 
-@section("scripts")
-<script src="{{asset('js/genetica/formulario.js')}}" type="text/javascript"></script>
-<script src="{{asset('js/genetica/lista_marcador.js')}}" type="text/javascript"></script>
-<script src="{{asset('js/genetica/clonar_input.js')}}" type="text/javascript"></script>
-@endsection
+
 
 @section('contenido')
 
@@ -184,16 +87,17 @@
                 <div class="card shadow-lg p-3 mb-5 bg-white ">
                     <div class="card-header text-center">
                         <div class="row">
-                            <div class="col-12 col-md-8 text-center"><h4>CREAR SECUENCIAS</h4></div>
-                            <div class="col-6 col-md-4"><a href="{{route('secuencia')}}" class="btn btn-info float-right"><i class="fa fa-fw fa-reply-all"></i>Listado</a></div>
+                            <div class="col-12 col-md-8 text-center"><h4>CREAR MATERIAL AL CATALOGO</h4></div>
+                            <div class="col-6 col-md-4"><a href="{{route('material')}}" class="btn btn-info float-right"><i class="fa fa-fw fa-reply-all"></i>Listado</a></div>
                           </div>
                     </div>
                     <div class="card-body">
-                            <form action="{{route('guardar_secuencia')}}" id="form-general" class="needs-validation formulario" method="POST" autocomplete="off">
+                            <form action="{{route('guardar_material')}}" id="form-general" class="needs-validation" method="POST" autocomplete="off">
                             @csrf
+                            
                             <div class="form-row">
                             
-                                    @include('genetica.secuencia.form')
+                                    @include('inventario.material.form')
                                 
                             </div>
                             <div class="form-row">

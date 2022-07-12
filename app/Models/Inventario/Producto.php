@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Producto extends Model
 {
     protected $table = "productos";
-    protected $fillable = ['nombre','unidadmedida_id', 'usuario_id'];
+    protected $fillable = ['nombre','unidadmedida_id', 'material_id', 'usuario_id'];
     
     //uno a muchos
     public function usuarios()
@@ -18,5 +18,16 @@ class Producto extends Model
     public function medida()
     {
         return $this->belongsTo('App\Models\Inventario\Unidadmedida','unidadmedida_id');
+    }
+
+    public function material()
+    {
+        return $this->belongsTo('App\Models\Inventario\Material','material_id');
+    }
+
+    //relacion de muchos a muchos tabla eventos con tabla productos
+    public function productos()
+    {
+        return $this->belongsToMany(Evento::class, 'evento_producto', 'producto_id', 'evento_id');
     }
 }

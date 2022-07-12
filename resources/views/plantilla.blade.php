@@ -13,13 +13,15 @@
    <link rel="stylesheet" href="{{asset('css/custom.css')}}">
 
    <link rel="stylesheet" href="{{asset('css/jquery-confirmv3/jquery-confirm.min.css')}}">
+
+   <link rel="stylesheet" href="{{asset('jquery-ui/jquery-ui.min.css')}}">
    
    <link rel="stylesheet" href="{{asset('alertifyjs/css/alertify.min.css')}}">
    <link rel="stylesheet" href="{{asset('alertifyjs/css/themes/default.min.css')}}">
    
    
    <link rel="stylesheet" href="{{asset('fontawesome/css/all.css')}}">
-   <title>@yield('titulo', 'Genetica')</title>
+   <title>@yield('titulo', 'Inventario')</title>
    
    <!--css para las vistas-->
    @yield('css')
@@ -120,6 +122,7 @@
 <script src="{{asset('js/popper/popper.min.js')}}"></script>
 <script src="{{asset('js/bootstrap4js/bootstrap.min.js')}}"></script>
 <script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ asset('jquery-ui/jquery-ui.min.js') }}"></script>
 <!-- Plugins que solo se ocupen en paginas especiales -->	 	
 @yield("scriptsPlugins")
 <script src="{{asset('js/pages/scripts/admin/scripts.js')}}"></script>

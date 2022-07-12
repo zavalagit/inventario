@@ -142,6 +142,14 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     Route::put('medida/{id}', 'Inventario\UnidadmedidaController@actualizar')->name('actualizar_medida');
     Route::delete('medida/{id}', 'Inventario\UnidadmedidaController@eliminar')->name('eliminar_medida');
 
+    /*RUTA DE CATEGORIAS DE MATERIALES*/
+    Route::get('material', 'Inventario\MaterialController@index')->name('material');
+    Route::get('material/crear', 'Inventario\MaterialController@crear')->name('crear_material');
+    Route::post('material', 'Inventario\MaterialController@guardar')->name('guardar_material');
+    Route::get('material/{id}/editar', 'Inventario\MaterialController@editar')->name('editar_material');
+    Route::put('material/{id}', 'Inventario\MaterialController@actualizar')->name('actualizar_material');
+    Route::delete('material/{id}', 'Inventario\MaterialController@eliminar')->name('eliminar_material');
+
     /*RUTA DE UNIDADES QUE PERTECEN EL PERSONAL*/
     Route::get('unidad', 'Inventario\UnidadController@index')->name('unidad');
     Route::get('unidad/crear', 'Inventario\UnidadController@crear')->name('crear_unidad');
@@ -149,3 +157,12 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     Route::get('unidad/{id}/editar', 'Inventario\UnidadController@editar')->name('editar_unidad');
     Route::put('unidad/{id}', 'Inventario\UnidadController@actualizar')->name('actualizar_unidad');
     Route::delete('unidad/{id}', 'Inventario\UnidadController@eliminar')->name('eliminar_unidad');
+
+    /*RUTA DE EVENTOS de los diferentes tipos entrada, salida, agregar, cancelar */
+    Route::get('evento', 'Inventario\EventoController@index')->name('evento');
+    Route::get('evento/crear', 'Inventario\EventoController@crear')->name('crear_evento');
+    Route::post('evento', 'Inventario\EventoController@guardar')->name('guardar_evento');
+    Route::post('mas-input', 'Inventario\EventoController@AgregarInput')->name('mas_input');
+
+    /*RUTAS DE PARA LA BUSQUEDA autocompletado EN LA BASE DE DATOS  */
+    Route::get('buscar/producto', 'Inventario\BuscarController@productos')->name('buscar.productos');

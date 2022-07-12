@@ -21,7 +21,7 @@
    
       
         <div align="center">
-            <h2>Bienvenido al Sistema De Genetica {{session()->get('nombre_usuario') ?? 'Invitado'}}</h2>
+            <h2>Bienvenido al Sistema De Inventario => {{session()->get('nombre_usuario') ?? 'Invitado'}}</h2>
         </div>
             
         

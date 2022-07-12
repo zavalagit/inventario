@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Inventario;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ValidarProducto;
+use App\Models\Inventario\Material;
 use App\Models\Inventario\Producto;
 use App\Models\Inventario\Unidadmedida;
 use Illuminate\Http\Request;
@@ -23,8 +24,9 @@ class CatalogoController extends Controller
     public function crear()
     {
         $medidas=Unidadmedida::select('id','nombre')->get();
+        $materiales=Material::select('id','nombre')->get();
         // return view('inventario.producto.crear');
-        return view('inventario.producto.crear', compact('medidas'));
+        return view('inventario.producto.crear', compact('medidas', 'materiales'));
     }
 
     //guardar los registros
@@ -35,6 +37,7 @@ class CatalogoController extends Controller
         Producto::create([
             'nombre' => request('nombre'),
             'unidadmedida_id' => $request->medida,
+            'material_id' => $request->material,
             'usuario_id' => auth()->id()
         ]);
         return redirect('producto/crear')->with('mensaje', 'producto creado con exito');
@@ -47,14 +50,15 @@ class CatalogoController extends Controller
         $data = Producto::findOrFail($id);
         //dd($data->firstWhere('unidadmedida_id', $data->unidadmedida_id));
         $medidas=Unidadmedida::select('id','nombre')->get();
+        $materiales=Material::select('id','nombre')->get();
         //$medidas=Unidadmedida::all();
-        return view('inventario.producto.editar', compact('data', 'medidas'));
+        return view('inventario.producto.editar', compact('data', 'medidas', 'materiales'));
     }
 
     //guarda la modifica en la base de datos
     public function actualizar(ValidarProducto $request, $id)
     {
-        Producto::findOrFail($id)->update(['nombre' => request('nombre'), 'unidadmedida_id' => $request->medida,'usuario_id' => auth()->id()]);
+        Producto::findOrFail($id)->update(['nombre' => request('nombre'), 'unidadmedida_id' => $request->medida, 'material_id' => $request->material, 'usuario_id' => auth()->id()]);
         return redirect('producto')->with('mensaje', 'Producto actualizado con exito');
     }
 

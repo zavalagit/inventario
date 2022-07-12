@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CrearTablaProductos extends Migration
+class CrearTablaMateriales extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,9 @@ class CrearTablaProductos extends Migration
      */
     public function up()
     {
-        Schema::create('productos', function (Blueprint $table) {
+        Schema::create('materiales', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre', 250);
-            $table->bigInteger('cantidad')->default(0);
-            $table->unsignedInteger('unidadmedida_id');
-            $table->foreign('unidadmedida_id')->references('id')->on('unidadmedidas')->onDelete('cascade');
-            $table->unsignedInteger('material_id');
-            $table->foreign('material_id')->references('id')->on('materiales')->onDelete('cascade');
+            $table->string('nombre', 150);
             $table->unsignedInteger('usuario_id');
             $table->foreign('usuario_id')->references('id')->on('usuarios')->onDelete('cascade');
             $table->timestamps();
@@ -37,6 +32,6 @@ class CrearTablaProductos extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('productos');
+        Schema::dropIfExists('materiales');
     }
 }
