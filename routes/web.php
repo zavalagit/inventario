@@ -84,45 +84,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     Route::post('menu-rol', 'MenuRolController@guardar')->name('guardar_menu_rol');
 });
 
-/*RUTAS DE GENETICA*/
-    /*RUTAS DE MARCADORES*/
-    Route::get('marcador', 'Genetica\MarcadorController@index')->name('marcador');
-    Route::get('marcador/crear', 'Genetica\MarcadorController@crear')->name('crear_marcador');
-    Route::post('marcador', 'Genetica\MarcadorController@guardar')->name('guardar_marcador');
-    Route::get('marcador/{id}/editar', 'Genetica\MarcadorController@editar')->name('editar_marcador');
-    Route::put('marcador/{id}', 'Genetica\MarcadorController@actualizar')->name('actualizar_marcador');
-    Route::delete('marcador/{id}', 'Genetica\MarcadorController@eliminar')->name('eliminar_marcador');
-
-    /*RUTAS DE KIT*/
-    Route::get('kit', 'Genetica\KitController@index')->name('kit');
-    Route::get('kit/crear', 'Genetica\KitController@crear')->name('crear_kit');
-    Route::post('kit', 'Genetica\KitController@guardar')->name('guardar_kit');
-    Route::get('kit/{id}/editar', 'Genetica\KitController@editar')->name('editar_kit');
-    Route::put('kit/{id}', 'Genetica\KitController@actualizar')->name('actualizar_kit');
-    Route::delete('kit/{id}', 'Genetica\KitController@eliminar')->name('eliminar_kit');
-
-    /*RUTAS DE KIT_MARCADOR*/
-    Route::get('kit-marcador/{kit}', 'Genetica\KitMarcadorController@index')->name('kit_marcador');
-    Route::post('kit-marcador', 'Genetica\KitMarcadorController@guardar')->name('guardar_kit_marcador');
-    Route::get('ordenar-marcador/{kit}', 'Genetica\KitMarcadorController@ordenar')->name('ordenar_marcadores');
-    Route::post('guardar-orden-marcador', 'Genetica\KitMarcadorController@guardarOrden')->name('guardar_orden_marcadores');
-    //buscar marcador
-    Route::post('buscar-marcadores', 'Genetica\KitMarcadorController@BuscarMarcador')->name('buscar_marcador');
-
-    /*RUTAS PARA LE SECUENCIAS*/
-    Route::get('secuencia', 'Genetica\SecuenciValorController@index')->name('secuencia');
-    Route::get('secuencia/crear', 'Genetica\SecuenciValorController@crear')->name('crear_secuencia');
-    Route::post('secuencia', 'Genetica\SecuenciValorController@guardar')->name('guardar_secuencia');
-    Route::post('consultar-lista-marcadores', 'Genetica\SecuenciValorController@ListaMarcadores')->name('consultar_lista_marcadores');
-    Route::post('agregar-input', 'Genetica\SecuenciValorController@AgregarInput')->name('agregar_input');
-    Route::get('secuencia/{id}/editar', 'Genetica\SecuenciValorController@editar')->name('editar_secuencia');
-    Route::put('secuencia/{id}', 'Genetica\SecuenciValorController@actualizar')->name('actualizar_secuencia');
-    /*vista de tabla en un modal*/
-    Route::post('ver-secuencia', 'Genetica\SecuenciValorController@ver')->name('ver_secuencia');
-
-    /*RUTAS PARA LA RELACION Ó BUSQUEDA*/
-    Route::get('coincidencia/{id}', 'Genetica\CoincidenciaController@index')->name('coincidencia');
-    Route::post('analizar', 'Genetica\CoincidenciaController@analizar')->name('analizar_secuencia');
 
     /**************************************PROYECTO DE INVENTARIO *************************************************/
 
