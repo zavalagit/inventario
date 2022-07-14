@@ -25,9 +25,9 @@ class Producto extends Model
         return $this->belongsTo('App\Models\Inventario\Material','material_id');
     }
 
-    //relacion de muchos a muchos tabla eventos con tabla productos
-    public function productos()
+    //relacion de muchos a muchos tabla productos con tabla eventos
+    public function eventos()
     {
-        return $this->belongsToMany(Evento::class, 'evento_producto', 'producto_id', 'evento_id');
+        return $this->belongsToMany(Evento::class, 'evento_producto', 'producto_id', 'evento_id')->withTimestamps();
     }
 }

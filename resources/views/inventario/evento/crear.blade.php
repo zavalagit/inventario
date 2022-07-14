@@ -94,7 +94,7 @@
 <div x-data="{
     number : 0,
     delete_producto(el){
-        {{-- console.log(el.parentNode.parentNode); --}}
+        console.log(el);
         el.parentNode.parentNode.remove();
 
     },
@@ -143,8 +143,8 @@
                                         
                                     
                                 </div>
-                                
-                                    <section id="recepcion" x-show="number == 1">
+                                <template x-if="number == 1">
+                                    <section id="recepcion">
                                         <div class="row">
                                             <div class="col s12 mb-3 card-header2">
                                             <blockquote class="text-center">
@@ -157,7 +157,7 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text requerido" id="inputGroupPrepend">NOMBRE ENTREGA</span>
                                                 </div>
-                                                <input type="text" name="nombre_entrega" class="form-control" id="nombre_entrega" value=""  placeholder="ingrese nombre la persona que entrega"  required>
+                                                <input type="text" name="nombre_entrega" class="form-control" id="nombre_entrega" value=""  placeholder="ingrese nombre la persona que entrega" required>
                                                 <div class="valid-feedback">¡Ok válido!</div>
                                                 <div class="invalid-feedback">Complete el campo.</div>   
                                             </div>
@@ -168,12 +168,115 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text requerido" id="inputGroupPrepend">NOMBRE RECIBE</span>
                                                 </div>
-                                                <input type="text" name="nombre_recibe" class="form-control" id="nombre_recibe" value=""  placeholder="ingrese nombre la persona que recibe"  required>
+                                                <input type="text" name="nombre_recibe" class="form-control" id="nombre_recibe" value=""  placeholder="ingrese nombre la persona que recibe" required>
                                                 <div class="valid-feedback">¡Ok válido!</div>
                                                 <div class="invalid-feedback">Complete el campo.</div>   
                                             </div>
                                         </div>      
                                     </section>
+                                </template>    
+
+                                <template x-if="number == 2">
+                                    <section id="entrega">
+                                        <div class="row">
+                                            <div class="col s12 mb-3 card-header2">
+                                            <blockquote class="text-center">
+                                                <h6><b>REGISTRO DATOS DE ENTREGA</b></h6>
+                                            </blockquote>
+                                            </div>
+                                        </div>
+                                        <div class="col mb-3">
+                        
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text requerido" id="inputGroupPrepend">NOMBRE ENTREGA</span>
+                                                </div>
+                                                <input type="text" name="nombre_entrega" class="form-control" id="nombre_entrega" value=""  placeholder="ingrese nombre la persona que entrega" required>
+                                                <div class="valid-feedback">¡Ok válido!</div>
+                                                <div class="invalid-feedback">Complete el campo.</div>   
+                                            </div>
+                                        </div>
+                                        <div class="col mb-3">
+                        
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text requerido" id="inputGroupPrepend">NOMBRE RECIBE</span>
+                                                </div>
+                                                <input type="text" name="nombre_recibe" class="form-control" id="nombre_recibe" value=""  placeholder="ingrese nombre la persona que recibe" required>
+                                                <div class="valid-feedback">¡Ok válido!</div>
+                                                <div class="invalid-feedback">Complete el campo.</div>   
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col mb-3">
+                        
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                  <span class="input-group-text requerido" id="inputGroupPrepend">UNIDAD</span>
+                                                </div>
+                                                <select name="unidad" id="unidad" class="form-control" required>
+                                                  <option value="">Seleccione unidad de recepcion</option>
+                                                    @foreach ($unidades as $id=> $unidad)
+                                                    <option value="{{$unidad->id}}"
+                                                    {{-- en un select podemos recuperar el material o selecionar otro en editar --}}
+                                                    {{isset($data) && ($data->unidad_id === $unidad->id) ? 'selected' : ''}}
+                                                    
+                                                    >
+                                                    {{$unidad->nombre}}</option>
+                                                    @endforeach
+                                                </select>     
+                                          </div>
+                                        </div>      
+                                    </section>
+                                </template>
+                                
+                                <template x-if="number == 3">
+                                    <section id="agregar">
+                                        <div class="row">
+                                            <div class="col s12 mb-3 card-header2">
+                                            <blockquote class="text-center">
+                                                <h6><b>SE ANEXARA PRODUCTOS EN STOCK</b></h6>
+                                            </blockquote>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 mb-3">
+                        
+                                            <div class="card">
+                                                <div class="card-header">
+                                                Nota Importante
+                                                </div>
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Se sumaran productos al stock ya existente...</h5>
+                                                    <p class="card-text">Todos los productos que ingrese en este formulario, se sumaran a los ya existentes. No podra anexar nuevos productos, en caso que lo desee tendra que ir al apartado de Recepcion </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </template>
+
+                                <template x-if="number == 4">
+                                    <section id="cancelar">
+                                        <div class="row">
+                                            <div class="col s12 mb-3 card-header2">
+                                            <blockquote class="text-center">
+                                                <h6><b>SE DISMINUIRA PRODUCTOS EN STOCK</b></h6>
+                                            </blockquote>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 mb-3">
+                        
+                                            <div class="card">
+                                                <div class="card-header">
+                                                Nota Importante
+                                                </div>
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Se restaran productos al stock ya existente...</h5>
+                                                    <p class="card-text">Todos los productos que ingrese en este formulario, se restaran a los ya existentes. </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </template>
 
                                     <section id="registrar_producto" x-show="number > 0">
                                         <div class="row">
@@ -214,7 +317,7 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text requerido" id="inputGroupPrepend">STOCK</span>
                                                     </div>
-                                                    <input type="text" name="stock[]" class="form-control" value=""  placeholder="cantidad">
+                                                    <input type="text" name="stock[]" class="form-control" value=""  placeholder="cantidad" required>
                                                     <div class="valid-feedback">¡Ok válido!</div>
                                                     <div class="invalid-feedback">Complete el campo.</div>   
                                                 </div>
@@ -224,11 +327,10 @@
                             
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
-                                                        <span class="input-group-text requerido" id="inputGroupPrepend">MEDIDA</span>
+                                                        <span class="input-group-text" id="inputGroupPrepend">MEDIDA</span>
                                                     </div>
-                                                    <input type="text" name="medida[]" class="form-control medida_1" value=""  placeholder="unidad de medida">
-                                                    <div class="valid-feedback">¡Ok válido!</div>
-                                                    <div class="invalid-feedback">Complete el campo.</div>   
+                                                    <input type="text" name="medida[]" class="form-control medida_1" value="" disabled>
+                                                       
                                                 </div>
                                             </div>
                                             

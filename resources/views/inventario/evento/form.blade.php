@@ -20,7 +20,7 @@
                     <div class='input-group-prepend'>
                         <span class='input-group-text requerido' id='inputGroupPrepend'>STOCK</span>
                     </div>
-                    <input type='text' name='stock[]' class='form-control' value=''  placeholder='cantidad'>
+                    <input type='text' name='stock[]' class='form-control' value=''  placeholder='cantidad' required>
                     <div class='valid-feedback'>¡Ok válido!</div>
                     <div class='invalid-feedback'>Complete el campo.</div>   
                 </div>
@@ -30,11 +30,9 @@
         
                 <div class='input-group'>
                     <div class='input-group-prepend'>
-                        <span class='input-group-text requerido' id='inputGroupPrepend'>MEDIDA</span>
+                        <span class='input-group-text' id='inputGroupPrepend'>MEDIDA</span>
                     </div>
-                    <input type='text' name='medida[]' class='form-control medida_{{$numero}}' id='' value=''  placeholder='unidad de medida'>
-                    <div class='valid-feedback'>¡Ok válido!</div>
-                    <div class='invalid-feedback'>Complete el campo.</div>   
+                    <input type='text' name='medida[]' class='form-control medida_{{$numero}}' id='' value='' disabled> 
                 </div>
             </div>
         
