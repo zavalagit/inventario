@@ -2,7 +2,7 @@
 <html>
     
 <head>
-	<title>Login Sistema de Genetica</title>
+	<title>Login Sistema de Inventario</title>
 	
     <link rel="stylesheet" href="{{asset('css/bootstrap4css/bootstrap.min.css')}}">
 

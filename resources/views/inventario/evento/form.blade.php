@@ -8,6 +8,7 @@
                     </div>
                     <input type='text' name='nombre_producto[]' class='form-control buscar_producto' id='{{$numero}}' value=''  placeholder='nombre del producto'>
                     <input type='hidden' name='id_producto[]' class='producto-id_{{$numero}}'>
+                    <input type='hidden' name='producto_estock[]' class='stock-producto_{{$numero}}'>
                     <div class='valid-feedback'>¡Ok válido!</div>
                     <div class='invalid-feedback'>Complete el campo.</div>   
                 </div>

@@ -305,6 +305,7 @@
                                                     </div>
                                                     <input type="text" name="nombre_producto[]" class="form-control buscar_producto" id="1" value=""  placeholder="nombre del producto">
                                                     <input type="hidden" name="id_producto[]" class="producto-id_1">
+                                                    <input type="hidden" name="producto_estock[]" class="stock-producto_1">
                                                     <div class="valid-feedback">¡Ok válido!</div>
                                                     <div class="invalid-feedback">Complete el campo.</div>   
                                                 </div>
@@ -393,6 +394,7 @@
             select: function(event, ui){
                 $( ".producto-id_" + num ).val( ui.item.id );
                 $( ".medida_" + num ).val( ui.item.medida );
+                $( ".stock-producto_" + num ).val( ui.item.stock );
                 $( ".producto-stock_" + num ).html("cantidad " + ui.item.stock );
             }
         });

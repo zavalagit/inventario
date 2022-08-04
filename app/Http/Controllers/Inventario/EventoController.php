@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Inventario;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ValidarEvento;
 use App\Models\Inventario\Evento;
 use App\Models\Inventario\Producto;
 use App\Models\Inventario\Unidad;
@@ -26,8 +27,9 @@ class EventoController extends Controller
     }
 
     //aqui se guarda a la base de datos 
-    public function guardar(Request $request)
+    public function guardar(ValidarEvento $request)
     {
+        //aqui se toma la decisión cuando es recepcion ingresan productos 
         if ($request->tipo == 'recepcion') {
                 //aqui se llena tabla eventos
                 //dd($request->all()); 
@@ -52,9 +54,11 @@ class EventoController extends Controller
                     
                 }
                 return redirect('evento/crear')->with('mensaje', 'evento recepcion actualizado con exito');
-            
-        } elseif($request->tipo == 'entrega') {
-            //aqui se llena tabla eventos 
+        
+        //aqui se toma la decisión para entregar productos        
+        }elseif($request->tipo == 'entrega') {
+            //aqui se llena tabla eventos
+            //dd($request->all()); 
             $evento = new Evento;
             $evento->tipo = $request->tipo;
             $evento->entrega = $request->nombre_entrega;
@@ -69,7 +73,7 @@ class EventoController extends Controller
                         //aqui se llena la tabla eventos_producto
                         $productos->find($request->id_producto[$i])->eventos()->attach($evento->id,['new_cantidad' => -intval($request->stock[array_keys($request->stock)[$i]]), 'old_cantidad' => $productos->find($request->id_producto[$i])->cantidad]);
                         
-                        //aqui en la tabla productos se aumenta la cantidad
+                        //aqui en la tabla productos se disminuye la cantidad
                         $producto = Producto::findOrFail($request->id_producto[$i]);
                         $producto->cantidad = $producto->cantidad - intval($request->stock[array_keys($request->stock)[$i]]);
                         $producto->save();
@@ -77,7 +81,9 @@ class EventoController extends Controller
                     
                 }
                 return redirect('evento/crear')->with('mensaje', 'Entrega con exito');
-        } elseif($request->tipo == 'agregar') {
+        
+        //aqui se toma la decision solo aumentar catidad de productos ya existente en stock 
+        }elseif($request->tipo == 'agregar') {
             //aqui se llena tabla eventos
             $evento = new Evento;
             $evento->tipo = $request->tipo;
@@ -101,6 +107,7 @@ class EventoController extends Controller
 
 
         }
+        //aqui se toma la decision de disminuir cantidad del producto ya existente en stock
         elseif($request->tipo == 'cancelar'){
             //dd($request->all());
             //aqui se llena tabla eventos
