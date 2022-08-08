@@ -148,6 +148,7 @@
                                                 <th scope="col">RECIBE</th>
                                                 <th scope="col">UNIDAD</th>
                                                 <th scope="col">USUARIO</th>
+                                                <th scope="col">FECHA</th>
                                                 <th scope="col">ALGO...</th>
                                             </tr>
                                         </thead>
@@ -163,8 +164,13 @@
                                                             <td>{{$evento->tipo}}</td>
                                                             <td>{{$evento->entrega}}</td>
                                                             <td>{{$evento->recibe}}</td>
-                                                            <td>{{$evento->unidad_id}}</td>
-                                                            <td>{{$evento->usuario_id}}</td>
+                                                            @if (!empty($evento->unidad->nombre))
+                                                                <td>{{$evento->unidad->nombre}}</td> 
+                                                            @else
+                                                                <td>"*****"</td> 
+                                                            @endif
+                                                            <td>{{$evento->usuarios->nombre}}</td>
+                                                            <td>{{$evento->created_at->format('d-m-Y H:i:s')}}</td>
                                                             <td>
                                                                 
                                                                       {{-- <a href="{{route('editar_medida', ['id' => $medida->id])}}">

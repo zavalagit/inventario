@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Evento extends Model
 {
     protected $table = "eventos";
-    protected $fillable = ['tipo', 'usuario_id'];
+    protected $fillable = ['tipo', 'unidad_id', 'usuario_id'];
 
     //uno a muchos
     public function unidad()
