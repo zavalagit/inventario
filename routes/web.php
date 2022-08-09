@@ -94,6 +94,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     Route::get('producto/{id}/editar', 'Inventario\CatalogoController@editar')->name('editar_producto');
     Route::put('producto/{id}', 'Inventario\CatalogoController@actualizar')->name('actualizar_producto');
     Route::delete('producto/{id}', 'Inventario\CatalogoController@eliminar')->name('eliminar_producto');
+    //buscar producto
+    Route::post('buscar-producto', 'Inventario\CatalogoController@buscarproducto')->name('buscar_producto');
 
     /*RUTAS DE UNIDAD DE MEDIDA*/
     Route::get('medida', 'Inventario\UnidadmedidaController@index')->name('medida');

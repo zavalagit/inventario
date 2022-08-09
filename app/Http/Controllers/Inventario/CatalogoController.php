@@ -75,4 +75,21 @@ class CatalogoController extends Controller
         }
     }
 
+    //buscar producto
+    //aqui realizamos la busqueda de productos llamado de ajax
+    public function buscarproducto(Request $request)
+    {
+        
+        //return response()->json(['respuesta' => $request->input('kit_id')]);
+        
+        if ($request->ajax()) {
+            $Productos = Producto::where('nombre','like',"%{$request->input('search')}%")->get();
+            
+            return view('inventario.producto.tabla_productos', compact('Productos'));
+           
+        } else {
+            abort(404);
+        }
+    }
+
 }
