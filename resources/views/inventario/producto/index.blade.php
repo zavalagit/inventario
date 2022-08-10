@@ -129,15 +129,17 @@
                             <div class="card shadow-lg p-3 mb-5 bg-white ">
                                 <div class="card-header text-center">
                                     <div class="row">
-                                        <div class="col col-md-5 text-center">
+                                        <div class="col text-center">
                                             @if (count($Productos))
                                             <h4>LISTADO DE PRODUCTOS<span class="badge badge-warning badge-pill">{{$Productos->count()}}</span></h4>
                                             @else
                                             <h4>LISTADO DE PRODUCTOS<span class="badge badge-warning badge-pill">0</span></h4>
                                             @endif
                                         </div>
-                                        <div class="col"><a href="{{route('crear_producto')}}" class="btn btn-success float-right">Crear Producto</a></div>
-                                        <div class="col"><input class="form-control mr-sm-2" type="search" name="search" id="search" placeholder="Buscar Producto" aria-label="Search"></div>
+                                        <div class="row">
+                                            <div class="col"><a href="{{route('crear_producto')}}" class="btn btn-success float-right">Crear Producto</a></div>
+                                            <div class="col"><input class="form-control mr-sm-2" type="search" name="search" id="search" placeholder="Buscar Producto" aria-label="Search"></div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="card-body mostrar_tabla_productos">

@@ -115,11 +115,12 @@
 
 @section("scripts")
 <script src="{{asset('js/inventario/eliminar_registro.js')}}" type="text/javascript"></script>
+<script src="{{asset('js/inventario/buscar_medidas.js')}}" type="text/javascript"></script>
 @endsection
 
 @section('contenido')
 
-
+                <meta name="csrf-token" content="{{ csrf_token() }}">
                 <div style="height: 50px;"></div>
                 <div class="container">
                     <div class="row">
@@ -128,67 +129,21 @@
                             <div class="card shadow-lg p-3 mb-5 bg-white ">
                                 <div class="card-header text-center">
                                     <div class="row">
-                                        <div class="col-12 col-md-8 text-center">
+                                        <div class="col text-center">
                                             @if (count($Medidas))
                                                 <h4>LISTADO DE MEDIDAS<span class="badge badge-warning badge-pill">{{$Medidas->count()}}</span></h4>
                                             @else
                                                 <h4>LISTADO DE MEDIDAS<span class="badge badge-warning badge-pill">0</span></h4>
                                             @endif
                                         </div>
-                                        <div class="col-6 col-md-4"><a href="{{route('crear_medida')}}" class="btn btn-success float-right">Crear Medida</a></div>
+                                        <div class="row">
+                                            <div class="col"><a href="{{route('crear_medida')}}" class="btn btn-success float-right">Crear Medida</a></div>
+                                            <div class="col"><input class="form-control mr-sm-2" type="search" name="search" id="search" placeholder="Buscar Medida" aria-label="Search"></div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="card-body">
-                                    <table id="tabla-inventario" class="table table-striped table-bordered table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">No.</th>
-                                                <th scope="col">NOMBRE</th>
-                                                <th scope="col">ALGO...</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @if (count($Medidas))
-                                                @php
-                                                $no = 1;
-                                                @endphp
-                    
-                                                    @foreach ($Medidas as $key => $medida)
-                                                        <tr>
-                                                            <th class="th-contador" scope="row" width="1.5%">{{$no++}}</th>
-                                                            <td>{{$medida->nombre}}</td>
-                                                            <td>
-                                                                
-                                                                      <a href="{{route('editar_medida', ['id' => $medida->id])}}">
-                                                                        <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-placement="left" title="Editar este registro">
-                                                                            <i class="fas fa-edit fa-2x"></i>
-                                                                        </span>
-                                                                    </a>
-                                                                  
-                                                                    <form action="{{route('eliminar_medida', ['id' => $medida->id])}}" class="d-inline form-eliminar" method="POST">
-                                                                        @csrf @method("delete")
-                                                                        <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-placement="left" title="Eliminar este registro">
-                                                                            <button type="submit" class="eliminar boton" id="campo" rel="tooltip">
-                                                                                <i class="fas fa-trash-alt fa-2x text-danger"></i>
-                                                                            </button>
-                                                                        </span>
-                                                                    </form>
-                                                                
-                                                                
-                                                            </td>
-                                                            
-                                                        </tr>
-                                                    @endforeach
-                                            @else
-                                                    <tr class="table-warning">
-                                                        <td colspan="12">
-                                                            <blockquote>No hay registros</blockquote>
-                                                        </td>
-                                                    </tr>
-                                            @endif
-                    
-                                        </tbody>
-                                    </table> 
+                                <div class="card-body mostrar_tabla_medidas">
+                                    @include('inventario.medida.tabla_medidas',['Medidas' => $Medidas])
                                 </div>   
                             </div>
                         </div>       

@@ -65,4 +65,21 @@ class UnidadmedidaController extends Controller
         }
     }
 
+    //buscar unidad de medida
+    //aqui realizamos la busqueda de una unidad de medida llamado desde ajax
+    public function buscarmedida(Request $request)
+    {
+        
+        //return response()->json(['respuesta' => $request->input('kit_id')]);
+        
+        if ($request->ajax()) {
+            $Medidas = Unidadmedida::where('nombre','like',"%{$request->input('search')}%")->get();
+            
+            return view('inventario.medida.tabla_medidas', compact('Medidas'));
+           
+        } else {
+            abort(404);
+        }
+    }
+
 }

@@ -104,6 +104,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     Route::get('medida/{id}/editar', 'Inventario\UnidadmedidaController@editar')->name('editar_medida');
     Route::put('medida/{id}', 'Inventario\UnidadmedidaController@actualizar')->name('actualizar_medida');
     Route::delete('medida/{id}', 'Inventario\UnidadmedidaController@eliminar')->name('eliminar_medida');
+    //buscar Medida
+    Route::post('buscar-medida', 'Inventario\UnidadmedidaController@buscarmedida')->name('buscar_medida');
 
     /*RUTA DE CATEGORIAS DE MATERIALES*/
     Route::get('material', 'Inventario\MaterialController@index')->name('material');
