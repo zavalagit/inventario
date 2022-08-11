@@ -63,4 +63,21 @@ class MaterialController extends Controller
             abort(404);
         }
     }
+
+     //buscar nombre de los diferentes catalogos de materiales 
+    //aqui realizamos la busqueda de las diferentes catalogos de materiales llamado desde ajax
+    public function buscarmaterial(Request $request)
+    {
+        
+        //return response()->json(['respuesta' => $request->input('kit_id')]);
+        
+        if ($request->ajax()) {
+            $materiales = Material::where('nombre','like',"%{$request->input('search')}%")->get();
+            
+            return view('inventario.material.tabla_material', compact('materiales'));
+           
+        } else {
+            abort(404);
+        }
+    }
 }

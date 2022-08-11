@@ -114,6 +114,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     Route::get('material/{id}/editar', 'Inventario\MaterialController@editar')->name('editar_material');
     Route::put('material/{id}', 'Inventario\MaterialController@actualizar')->name('actualizar_material');
     Route::delete('material/{id}', 'Inventario\MaterialController@eliminar')->name('eliminar_material');
+    //buscar catalogo de materiales
+    Route::post('buscar-material', 'Inventario\MaterialController@buscarmaterial')->name('buscar_material');
 
     /*RUTA DE UNIDADES QUE PERTECEN EL PERSONAL*/
     Route::get('unidad', 'Inventario\UnidadController@index')->name('unidad');

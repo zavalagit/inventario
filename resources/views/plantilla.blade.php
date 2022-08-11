@@ -51,7 +51,7 @@
                     
                     
                     
-                        <h2>Bienvanido {{session()->get('nombre_usuario') ?? 'Invitado'}}</h2>
+                        <h2>Bienvenido {{session()->get('nombre_usuario') ?? 'Invitado'}}</h2>
                 
                     
                 
