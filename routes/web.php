@@ -124,6 +124,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     Route::get('unidad/{id}/editar', 'Inventario\UnidadController@editar')->name('editar_unidad');
     Route::put('unidad/{id}', 'Inventario\UnidadController@actualizar')->name('actualizar_unidad');
     Route::delete('unidad/{id}', 'Inventario\UnidadController@eliminar')->name('eliminar_unidad');
+    //buscar unidades
+    Route::post('buscar-unidad', 'Inventario\UnidadController@buscarunidad')->name('buscar_unidad');
 
     /*RUTA DE EVENTOS de los diferentes tipos entrada, salida, agregar, cancelar */
     Route::get('evento', 'Inventario\EventoController@index')->name('evento');

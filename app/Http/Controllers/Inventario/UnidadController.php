@@ -63,4 +63,22 @@ class UnidadController extends Controller
             abort(404);
         }
     }
+
+
+    //buscar por el nombre de los diferentes unidades registradas 
+    //aqui realizamos la busqueda de las diferentes unidades llamado desde ajax
+    public function buscarunidad(Request $request)
+    {
+        
+        //return response()->json(['respuesta' => $request->input('kit_id')]);
+        
+        if ($request->ajax()) {
+            $unidades = Unidad::where('nombre','like',"%{$request->input('search')}%")->get();
+            
+            return view('inventario.unidad.tabla_unidades', compact('unidades'));
+           
+        } else {
+            abort(404);
+        }
+    }
 }
