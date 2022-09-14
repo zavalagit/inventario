@@ -35,7 +35,9 @@ class EventoController extends Controller
                 //dd($request->all()); 
                 $evento = new Evento;
                 $evento->tipo = $request->tipo;
+                $evento->cargo_1 = $request->cargo_1;
                 $evento->entrega = $request->nombre_entrega;
+                $evento->cargo_2 = $request->cargo_2;
                 $evento->recibe = $request->nombre_recibe;
                 $evento->usuario_id = auth()->id();
                 $evento->save();
@@ -61,7 +63,9 @@ class EventoController extends Controller
             //dd($request->all()); 
             $evento = new Evento;
             $evento->tipo = $request->tipo;
+            $evento->cargo_1 = $request->cargo_1;
             $evento->entrega = $request->nombre_entrega;
+            $evento->cargo_2 = $request->cargo_2;
             $evento->recibe = $request->nombre_recibe;
             $evento->unidad_id = $request->unidad;
             $evento->usuario_id = auth()->id();

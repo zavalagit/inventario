@@ -109,13 +109,15 @@
                   }
 
                 
+            
+                  
+
+                
 
    </style>
 @endsection
 
-@section("scripts")
-<script src="{{asset('js/inventario/eliminar_registro.js')}}" type="text/javascript"></script>
-@endsection
+
 
 @section('contenido')
 
@@ -149,7 +151,7 @@
                                                 <th scope="col">UNIDAD</th>
                                                 <th scope="col">USUARIO</th>
                                                 <th scope="col">FECHA</th>
-                                                <th scope="col">ALGO...</th>
+                                                <th scope="col">ACCIONES</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -162,8 +164,8 @@
                                                         <tr>
                                                             <th class="th-contador" scope="row" width="1.5%">{{$no++}}</th>
                                                             <td>{{$evento->tipo}}</td>
-                                                            <td>{{$evento->entrega}}</td>
-                                                            <td>{{$evento->recibe}}</td>
+                                                            <td>{{$evento->cargo_1.' '.$evento->entrega}}</td>
+                                                            <td>{{$evento->cargo_2.' '.$evento->recibe}}</td>
                                                             @if (!empty($evento->unidad->nombre))
                                                                 <td>{{$evento->unidad->nombre}}</td> 
                                                             @else
@@ -173,13 +175,13 @@
                                                             <td>{{$evento->created_at->format('d-m-Y H:i:s')}}</td>
                                                             <td>
                                                                 
-                                                                      {{-- <a href="{{route('editar_medida', ['id' => $medida->id])}}">
+                                                                    <a href="{{route('editar_medida', ['id' => $medida->id])}}">
                                                                         <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-placement="left" title="Editar este registro">
                                                                             <i class="fas fa-edit fa-2x"></i>
                                                                         </span>
                                                                     </a>
                                                                   
-                                                                    <form action="{{route('eliminar_medida', ['id' => $medida->id])}}" class="d-inline form-eliminar" method="POST">
+                                                                    {{--<form action="{{route('eliminar_medida', ['id' => $medida->id])}}" class="d-inline form-eliminar" method="GET">
                                                                         @csrf @method("delete")
                                                                         <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-placement="left" title="Eliminar este registro">
                                                                             <button type="submit" class="eliminar boton" id="campo" rel="tooltip">
@@ -187,8 +189,22 @@
                                                                             </button>
                                                                         </span>
                                                                     </form> --}}
-                                                                
-                                                                
+                                                                {{-- @if ($evento->tipo == 'recepcion' || $evento->tipo == 'entrega')
+                                                                    <a class="nota" href="{{route('comprobante-salida', ['id' => $evento->id])}}" data-evento-id="{{$evento->id}}" target="_blank">
+                                                                        <span class="" tabindex="0" data-toggle="tooltip" data-placement="left" title="Recibo de salida">
+                                                                            <i class="far fa-file-alt fa-2x"></i>
+                                                                        </span>
+                                                                    </a>
+                                                                @endif --}}
+
+                                                                @if ($evento->tipo == 'recepcion' || $evento->tipo == 'entrega')
+                                                                    <a class="" href="{{route('comprobante-salida', ['id' => $evento->id])}}" target="_blank">
+                                                                        {{-- <span class="" tabindex="0" data-toggle="tooltip" data-placement="left" title="Recibo de salida"> --}}
+                                                                            <i class="far fa-file-alt fa-2x"></i>
+                                                                        {{-- </span> --}}
+                                                                    </a>
+                                                                @endif
+                                                                    
                                                             </td>
                                                             
                                                         </tr>
@@ -208,4 +224,26 @@
                         </div>       
                     </div>                  
                 </div>             
+@endsection
+
+@section("scripts")
+<script src="{{asset('js/inventario/eliminar_registro.js')}}" type="text/javascript"></script>
+<script>
+    $(document.body).on("click",".nota",function(e) {
+        e.preventDefault();
+        let id = $(this).attr('data-evento-id');
+        
+            console.log(id);
+            $.ajax({
+            type: 'get',
+            url: '/comprobante-salida/'+id,
+            
+            success:function(respuesta){
+                window.open('http://inventario.test/comprobante-salida/2', '_blank');
+            }
+         });
+        //    $("[data-toggle='tooltip']").tooltip('destroy');
+    });
+    </script>
+
 @endsection

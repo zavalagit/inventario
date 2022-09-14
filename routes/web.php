@@ -133,5 +133,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     Route::post('evento', 'Inventario\EventoController@guardar')->name('guardar_evento');
     Route::post('mas-input', 'Inventario\EventoController@AgregarInput')->name('mas_input');
 
+    Route::get('evento/{id}/editar', 'Inventario\EventoController@guardar')->name('editar_unidad');
+
     /*RUTAS DE PARA LA BUSQUEDA autocompletado EN LA BASE DE DATOS  */
     Route::get('buscar/producto', 'Inventario\BuscarController@productos')->name('buscar.productos');
+
+    /*RUTAS PARA PARA CREAR LOS PDF*/
+    Route::get('comprobante-salida/{id}','Inventario\PDFController@comprobante_salida')->name('comprobante-salida');

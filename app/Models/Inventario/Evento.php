@@ -24,7 +24,7 @@ class Evento extends Model
     //relacion de muchos a muchos tabla eventos con tabla productos
     public function productos()
     {
-        return $this->belongsToMany(Producto::class, 'evento_producto', 'evento_id', 'producto_id')->withTimestamps();
+        return $this->belongsToMany(Producto::class, 'evento_producto', 'evento_id', 'producto_id')->withPivot('new_cantidad', 'old_cantidad')->withTimestamps();
     }
 
 }

@@ -17,8 +17,9 @@ class CrearTablaEventos extends Migration
             $table->increments('id');
 
             $table->string('tipo', 50);
-
+            $table->string('cargo_1', 200)->nullable();
             $table->string('entrega', 250)->nullable();
+            $table->string('cargo_2', 200)->nullable();
             $table->string('recibe', 250)->nullable();
 
             $table->unsignedInteger('unidad_id')->nullable();

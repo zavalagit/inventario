@@ -152,25 +152,48 @@
                                             </blockquote>
                                             </div>
                                         </div>
-                                        <div class="col mb-3">
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text requerido" id="inputGroupPrepend">NOMBRE ENTREGA</span>
+                                        <div class="row">
+                                            <div class="col-sm-4 mb-3">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text requerido" id="inputGroupPrepend">CARGO</span>
+                                                    </div>
+                                                    <input type="text" name="cargo_1" class="form-control" id="cargo_1" value=""  placeholder="ingrese cargo" required>
+                                                    <div class="valid-feedback">¡Ok válido!</div>
+                                                    <div class="invalid-feedback">Complete el campo.</div>   
                                                 </div>
-                                                <input type="text" name="nombre_entrega" class="form-control" id="nombre_entrega" value=""  placeholder="ingrese nombre la persona que entrega" required>
-                                                <div class="valid-feedback">¡Ok válido!</div>
-                                                <div class="invalid-feedback">Complete el campo.</div>   
+                                            </div>
+                                            <div class="col-sm-8 mb-3">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text requerido" id="inputGroupPrepend">NOMBRE ENTREGA</span>
+                                                    </div>
+                                                    <input type="text" name="nombre_entrega" class="form-control" id="nombre_entrega" value=""  placeholder="ingrese nombre la persona que entrega" required>
+                                                    <div class="valid-feedback">¡Ok válido!</div>
+                                                    <div class="invalid-feedback">Complete el campo.</div>   
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col mb-3">
-                        
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text requerido" id="inputGroupPrepend">NOMBRE RECIBE</span>
+                                        <div class="row">
+                                            <div class="col-sm-4 mb-3">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text requerido" id="inputGroupPrepend">CARGO</span>
+                                                    </div>
+                                                    <input type="text" name="cargo_2" class="form-control" id="cargo_2" value=""  placeholder="ingrese cargo" required>
+                                                    <div class="valid-feedback">¡Ok válido!</div>
+                                                    <div class="invalid-feedback">Complete el campo.</div>   
                                                 </div>
-                                                <input type="text" name="nombre_recibe" class="form-control" id="nombre_recibe" value=""  placeholder="ingrese nombre la persona que recibe" required>
-                                                <div class="valid-feedback">¡Ok válido!</div>
-                                                <div class="invalid-feedback">Complete el campo.</div>   
+                                            </div>
+                                            <div class="col-sm-8 mb-3">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text requerido" id="inputGroupPrepend">NOMBRE RECIBE</span>
+                                                    </div>
+                                                    <input type="text" name="nombre_recibe" class="form-control" id="nombre_recibe" value=""  placeholder="ingrese nombre la persona que recibe" required>
+                                                    <div class="valid-feedback">¡Ok válido!</div>
+                                                    <div class="invalid-feedback">Complete el campo.</div>   
+                                                </div>
                                             </div>
                                         </div>      
                                     </section>
@@ -185,29 +208,51 @@
                                             </blockquote>
                                             </div>
                                         </div>
-                                        <div class="col mb-3">
-                        
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text requerido" id="inputGroupPrepend">NOMBRE ENTREGA</span>
+
+                                        <div class="row">
+                                            <div class="col-sm-4 mb-3">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text requerido" id="inputGroupPrepend">CARGO</span>
+                                                    </div>
+                                                    <input type="text" name="cargo_1" class="form-control" id="cargo_1" value=""  placeholder="ingrese cargo" required>
+                                                    <div class="valid-feedback">¡Ok válido!</div>
+                                                    <div class="invalid-feedback">Complete el campo.</div>   
                                                 </div>
-                                                <input type="text" name="nombre_entrega" class="form-control" id="nombre_entrega" value=""  placeholder="ingrese nombre la persona que entrega" required>
-                                                <div class="valid-feedback">¡Ok válido!</div>
-                                                <div class="invalid-feedback">Complete el campo.</div>   
+                                            </div>
+                                            <div class="col-sm-8 mb-3">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text requerido" id="inputGroupPrepend">NOMBRE ENTREGA</span>
+                                                    </div>
+                                                    <input type="text" name="nombre_entrega" class="form-control" id="nombre_entrega" value=""  placeholder="ingrese nombre la persona que entrega" required>
+                                                    <div class="valid-feedback">¡Ok válido!</div>
+                                                    <div class="invalid-feedback">Complete el campo.</div>   
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col mb-3">
-                        
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text requerido" id="inputGroupPrepend">NOMBRE RECIBE</span>
+                                        <div class="row">
+                                            <div class="col-sm-4 mb-3">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text requerido" id="inputGroupPrepend">CARGO</span>
+                                                    </div>
+                                                    <input type="text" name="cargo_2" class="form-control" id="cargo_2" value=""  placeholder="ingrese cargo" required>
+                                                    <div class="valid-feedback">¡Ok válido!</div>
+                                                    <div class="invalid-feedback">Complete el campo.</div>   
                                                 </div>
-                                                <input type="text" name="nombre_recibe" class="form-control" id="nombre_recibe" value=""  placeholder="ingrese nombre la persona que recibe" required>
-                                                <div class="valid-feedback">¡Ok válido!</div>
-                                                <div class="invalid-feedback">Complete el campo.</div>   
+                                            </div>
+                                            <div class="col-sm-8 mb-3">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text requerido" id="inputGroupPrepend">NOMBRE RECIBE</span>
+                                                    </div>
+                                                    <input type="text" name="nombre_recibe" class="form-control" id="nombre_recibe" value=""  placeholder="ingrese nombre la persona que recibe" required>
+                                                    <div class="valid-feedback">¡Ok válido!</div>
+                                                    <div class="invalid-feedback">Complete el campo.</div>   
+                                                </div>
                                             </div>
                                         </div>
-                                        
                                         <div class="col mb-3">
                         
                                             <div class="input-group">
