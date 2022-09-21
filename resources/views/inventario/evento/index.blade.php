@@ -175,11 +175,7 @@
                                                             <td>{{$evento->created_at->format('d-m-Y H:i:s')}}</td>
                                                             <td>
                                                                 
-                                                                    <a href="{{route('editar_medida', ['id' => $medida->id])}}">
-                                                                        <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-placement="left" title="Editar este registro">
-                                                                            <i class="fas fa-edit fa-2x"></i>
-                                                                        </span>
-                                                                    </a>
+                                                                    
                                                                   
                                                                     {{--<form action="{{route('eliminar_medida', ['id' => $medida->id])}}" class="d-inline form-eliminar" method="GET">
                                                                         @csrf @method("delete")
@@ -198,6 +194,12 @@
                                                                 @endif --}}
 
                                                                 @if ($evento->tipo == 'recepcion' || $evento->tipo == 'entrega')
+
+                                                                    <a href="{{route('editar_evento', ['id' => $evento->id])}}">
+                                                                        <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-placement="left" title="Editar este registro">
+                                                                            <i class="fas fa-edit fa-2x"></i>
+                                                                        </span>
+                                                                    </a>
                                                                     <a class="" href="{{route('comprobante-salida', ['id' => $evento->id])}}" target="_blank">
                                                                         {{-- <span class="" tabindex="0" data-toggle="tooltip" data-placement="left" title="Recibo de salida"> --}}
                                                                             <i class="far fa-file-alt fa-2x"></i>

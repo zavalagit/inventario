@@ -133,7 +133,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     Route::post('evento', 'Inventario\EventoController@guardar')->name('guardar_evento');
     Route::post('mas-input', 'Inventario\EventoController@AgregarInput')->name('mas_input');
 
-    Route::get('evento/{id}/editar', 'Inventario\EventoController@guardar')->name('editar_unidad');
+    Route::get('evento/{id}/editar', 'Inventario\EventoController@editar')->name('editar_evento');
+    Route::put('evento/{id}', 'Inventario\EventoController@actualizar')->name('actualizar_evento');
 
     /*RUTAS DE PARA LA BUSQUEDA autocompletado EN LA BASE DE DATOS  */
     Route::get('buscar/producto', 'Inventario\BuscarController@productos')->name('buscar.productos');

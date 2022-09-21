@@ -1,7 +1,7 @@
 @extends('plantilla')
 
 @section('titulo')
-    Editar Unida
+    Editar Evento
 @endsection
 
 
@@ -59,7 +59,16 @@
             background: -webkit-linear-gradient(to right, #2B32B2, #1488CC);  /* Chrome 10-25, Safari 5.1-6 */
             background: linear-gradient(to right, #2B32B2, #1488CC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */   
             color:white;
-            }
+        }
+
+        .card-header2{
+            background: linear-gradient(to right, #2a442e, #14cc23); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */   
+            color:white;
+        }
+
+        .card-header2 {
+            padding: 0.75rem 1.25rem;
+        }    
 
             .valid-feedback {
                 display: none;
@@ -86,16 +95,21 @@
                 <div class="card shadow-lg p-3 mb-5 bg-white ">
                     <div class="card-header text-center">
                         <div class="row">
-                            <div class="col-12 col-md-8 text-center"><h4>EDITAR UNIDA</h4></div>
-                            <div class="col-6 col-md-4"><a href="{{route('unidad')}}" class="btn btn-info float-right"><i class="fa fa-fw fa-reply-all"></i>Listado</a></div>
+                            <div class="col-12 col-md-8 text-center"><h4>EDITAR EVENTO</h4></div>
+                            <div class="col-6 col-md-4"><a href="{{route('evento')}}" class="btn btn-info float-right"><i class="fa fa-fw fa-reply-all"></i>Listado</a></div>
                           </div>
                     </div>
                     <div class="card-body">
-                            <form action="{{route('actualizar_unidad', ['id' => $data->id])}}" id="form-general" class="needs-validation" method="POST" autocomplete="off">
+                            <form action="{{route('actualizar_evento', ['id' => $data->id])}}" id="form-general" class="needs-validation" method="POST" autocomplete="off">
                             @csrf @method("put")
-                            <div class="form-row">
-                            
-                                    @include('inventario.unidad.form')
+                            <div class="">
+                            @if ($data->tipo == 'recepcion')
+                                @include('inventario.evento.form_recepcion')
+                                
+                            @else
+                                @include('inventario.evento.form_entrega')
+                            @endif
+                                    
                                 
                             </div>
                             <div class="form-row">

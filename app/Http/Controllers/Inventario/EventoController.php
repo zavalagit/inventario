@@ -159,4 +159,49 @@ class EventoController extends Controller
         }
     }
 
+    //editar los registros de la unidad el formulario
+    public function editar($id)
+    {
+        $data = Evento::findOrFail($id);
+        $unidades=Unidad::select('id','nombre')->get();
+        return view('inventario.evento.editar', compact('data', 'unidades'));
+    }
+
+    //guarda la modifica en la base de datos tabla eventos
+    public function actualizar(Request $request, $id)
+    {
+        //dd($id);
+        if ($request->unidad) {
+            //dd('hola1');
+            $evento = Evento::findOrFail($id);
+            $evento->cargo_1 = $request->cargo_1;
+            $evento->entrega = $request->nombre_entrega;
+            $evento->cargo_2 = $request->cargo_2;
+            $evento->recibe = $request->nombre_recibe;
+            $evento->unidad_id = $request->unidad;
+            $evento->usuario_id = auth()->id();
+            $evento->save();
+            
+            return redirect('evento')->with('mensaje', 'Evento fue actualizado con exito');                                    
+        } else {
+            // Evento::findOrFail($id)->update(['cargo_1' => request('cargo_1'), 
+            //                                  'entrega' => request('nombre_entrega'), 
+            //                                  'cargo_2' => request('cargo_2'),
+            //                                  'recibe' => request('nombre_recibe'),
+            //                                  'usuario_id' => auth()->id()]);
+            $evento = Evento::findOrFail($id);
+            $evento->cargo_1 = $request->cargo_1;
+            $evento->entrega = $request->nombre_entrega;
+            $evento->cargo_2 = $request->cargo_2;
+            $evento->recibe = $request->nombre_recibe;
+            $evento->usuario_id = auth()->id();
+            $evento->save();
+            return redirect('evento')->with('mensaje', 'Evento fue actualizado con exito');
+            //dd('hola2');
+        }
+        
+        // Evento::findOrFail($id)->update(['nombre' => request('nombre'),'usuario_id' => auth()->id()]);
+        // return redirect('unidad')->with('mensaje', 'unidad fue actualizado con exito');
+    }
+
 }
